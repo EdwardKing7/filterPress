@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= corporationFullName %></title>
+    <link rel="stylesheet" href="/stylesheets/product.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="/corporation">首页</a></li>
+            <li><a href="/product" style="background-color: rgb(25, 110, 8);">产品与服务</a></li>
+            <li><a href="/contactus">联系我们</a></li>
+            <li><a href="/login">登录</a></li>
+            <li><a href="/admin" style="display: none;" id="system-admin">系统管理</a></li>
+        </ul>
+    </nav>
+    <!-- 页面头部，与联系我们页签一致 -->
+    <header>
+        <h1><%= corporationName %></h1>
+        <p><%= promotionText %></p>
+    </header>
+    
+    <div class="center-body" style="background-color: #f4f4f4; text-align: center; justify-content: center;">
+        <!-- 右上角操作栏 -->
+        <div class="top-right-actions">
+            <span class="action-tab" id="to-login"><a href="/login">去登录</a></span>
+            <span class="action-tab" id="account-tab">1</span>
+            <span class="action-tab" id="logout">退出登录</span>
+            <!-- 账户信息悬浮框 -->
+            <div id="user-info-popup" style="display: none;">
+                <p><strong>用户名:</strong> <span id="popup-username">1</span></p>
+                <p><strong>手机号:</strong> <span id="popup-phone">1</span></p>
+                <p><strong>邮箱:</strong> <span id="popup-email">1</span></p>
+                <p><strong>角色:</strong> <span id="popup-role">1</span></p>
+            </div>
+        </div>
+        <div class="center-shell" style="background-color: rgb(175, 221, 171);width: 90%;padding-top: 1%; padding-bottom: 1%; margin-left: 5%;margin-right: 5%; margin-bottom: 2%;margin-top:1%;border-radius: 15px;">
+            
+            <!-- 搜索与筛选区域 -->
+            <div class="search-filter">
+                <input type="text" id="search-name" placeholder="根据产品名称搜索">
+                <button class="button button-primary" id="searchButton">搜索</button>
+                <select id="sort-price">
+                    <option value="">--原价--</option>
+                    <option value="asc">正序</option>
+                    <option value="desc">倒序</option>
+                </select>
+                <select id="expect-price">
+                    <option value="">--出售价格--</option>
+                    <option value="asc">正序</option>
+                    <option value="desc">倒序</option>
+                </select>
+                <select id="sort-time">
+                    <option value="">--发布时间--</option>
+                    <option value="asc">正序</option>
+                    <option value="desc">倒序</option>
+                </select>
+                <select id="bargain-filter">
+                    <option value="">--可否砍价--</option>
+                    <option value="yes">允许</option>
+                    <option value="no">不允许</option>
+                </select>
+
+                <button class="button button-primary" id="publish-product"><a href="/publish">➕ 发布产品</a></button>
+            </div>
+            <!-- 产品列表 -->
+            <div class="product-list" id="product-list">
+                <!-- 这里会动态添加产品项 -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- 页面尾部，与联系我们页签一致 -->
+    <footer>
+        <p>版权所有 &copy; 2025 <%= corporationFullName %> 保留所有权利</p>
+    </footer>
+    <!-- 引入 Axios 库，下面这两个和axios相关的包一定要注意顺序，axios.min.js在前面，第二个包是为了解决axios得到重定向请求可以正常重定向的 -->
+    <script src="/javascripts/axios.min.js"></script>
+    <script src="/javascripts/axios-interceptor.js"></script>
+    <script type="module" src="/javascripts/utils/Semaphore.js"></script>
+    <script type="module" src="/javascripts/product.js"></script>
+</body>
+
+</html>

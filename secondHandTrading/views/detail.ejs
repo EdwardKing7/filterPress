@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= corporationFullName %></title>
+    <link rel="stylesheet" href="/stylesheets/detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* 定义包含电话号码和图标的容器样式 */
+       .phone-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px; /* 图标和电话号码之间的间距 */
+        }
+
+        /* 定义电话号码样式 */
+       .phone-number {
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* 定义电话图标样式 */
+       .phone-icon {
+            color: #007BFF; /* 图标颜色 */
+            font-size: 18px; /* 图标大小 */
+        }
+
+        .time-container {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            font-size: 12px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .address-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            font-family: '楷体', 'KaiTi', serif;
+            font-size: 15px;
+            color: #060606;
+            margin-bottom: 10px;
+            margin-left: 5%;
+            width: 1000px;
+        }
+
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            touch-action: none; /* 禁用默认触摸行为 */
+            z-index: 1000;
+        }
+
+        /* 关闭按钮 */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #8B4513;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* 图片容器 */
+        .img-container {
+            position: relative;
+            transition: transform 0.1s;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        /* 实际图片 */
+        .modal-img {
+            display: block;
+            max-width: 100%;
+            max-height: 90vh;
+            transform-origin: center center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="/corporation">首页</a></li>
+            <li><a href="/product" style="background-color: rgb(25, 110, 8);">产品与服务</a></li>
+            <li><a href="/contactus">联系我们</a></li>
+            <li><a href="/login">登录</a></li>
+            <li><a href="/admin" style="display: none;" id="system-admin">系统管理</a></li>
+        </ul>
+    </nav>
+    <!-- 页面头部 -->
+    <header>
+        <h1><%= corporationName %></h1>
+        <p><%= promotionText %></p>
+    </header>
+    
+    <!-- 右上角操作栏 -->
+    <div class="top-right-actions">
+        <span class="action-tab" id="publish-product"><a href="#" id="publish-product-href">发布新产品</a></span>
+        <span class="action-tab" id="to-product"><a href="/product">回列表页</a></span>
+        <span class="action-tab" id="to-login"><a href="/login">去登录</a></span>
+        <span class="action-tab" id="edit-product">编辑</span>
+        <span class="action-tab" id="delete-product">下架</span>
+        <span class="action-tab" id="account-tab"></span>
+        <span class="action-tab" id="logout">退出登录</span>
+        <!-- 账户信息悬浮框 -->
+        <div id="user-info-popup" style="display: none;">
+            <p><strong>用户名:</strong> <span id="popup-username"></span></p>
+            <p><strong>手机号:</strong> <span id="popup-phone"></span></p>
+            <p><strong>邮箱:</strong> <span id="popup-email"></span></p>
+            <p><strong>角色:</strong> <span id="popup-role"></span></p>
+        </div>
+    </div>
+    <!-- 产品详情 -->
+    <div class="product-detail">
+        <div class="product-images">
+            <button class="prev-button">&lt;</button>
+            <img src="#" alt="产品图片" id="product-image">
+            <button class="next-button">&gt;</button>
+        </div>
+        <div class="product-info">
+            <h2 id="productName"></h2>
+            <p id="originPrice"></p>
+            <p id="expectPrice"></p>
+            <p id="productNum"></p>
+            <p id="barginAllowed"></p>
+            <p id="productLocation"></p>
+            <p id="contactPhone"></p>
+            <p id="addTime"></p>
+            <p id="productDescription"></p>
+        </div>
+    </div>
+    <!-- 模态框 -->
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="img-container" id="img-container">
+            <img class="modal-img" id="modal-img" src="" alt="">
+        </div>
+    </div>
+    <!-- 评论模块 -->
+    <div class="comment-section">
+        <h3>添加评论</h3>
+        <h4 style="color: red; display:none;" id="commit-hint">请先输入评论内容才能提交评论！</h4>
+        <input type="text" id="comment-input" placeholder="请输入评论内容">
+        <button id="submit-comment">提交评论</button>
+        <h3>历史评价记录</h3>
+        <div class="comment-list">
+            
+        </div>
+    </div>
+    <!-- 页面尾部 -->
+    <footer>
+        <p>版权所有 &copy; 2025 河南宇源压滤机有限公司 保留所有权利</p>
+    </footer>
+    <!-- 引入 Axios 库，下面这两个和axios相关的包一定要注意顺序，axios.min.js在前面，第二个包是为了解决axios得到重定向请求可以正常重定向的 -->
+    <script src="/javascripts/axios.min.js"></script>
+    <script src="/javascripts/axios-interceptor.js"></script>
+    <script src="/javascripts/detail.js"></script>
+</body>
+
+</html>

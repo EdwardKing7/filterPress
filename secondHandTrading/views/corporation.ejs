@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= corporationFullName %></title>
+    <link rel="stylesheet" href="/stylesheets/corporation.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="/corporation" style="background-color: rgb(25, 110, 8);">首页</a></li>
+            <li><a href="/product">产品与服务</a></li>
+            <li><a href="/contactus">联系我们</a></li>
+            <li><a href="/login">登录</a></li>
+            <li><a href="/admin" style="display: none;" id="system-admin">系统管理</a></li>
+        </ul>
+    </nav>
+    <!-- 头部 -->
+    <header>
+        <h1><%= corporationName %></h1>
+        <p><%= promotionText %></p>
+    </header>
+    <!-- 主要内容容器 -->
+    <div class="container">
+        <div class="myPanel" style="background-color: rgb(175, 221, 171); padding: 2% 5% 10% 5%; border-radius: 15px;">
+            <!-- 视频容器 -->
+            <div id="video-container">
+                <!-- 视频元素 -->
+                <video id="video-player" muted loop preload="auto">
+                    <!-- 视频源 -->
+                    <source src="<%= showVideoUrl %>" type="video/mp4">
+                    您的浏览器不支持视频播放。
+                </video>
+            </div>
+            <div class="corporation-container">
+                <h1 class="corporation-slogan">
+                    <%= corporationName %> <br>
+                    <span class="corporation-slogan-decorate">行业领航者</span>
+                </h1>
+                <p class="corporation-content">
+                    &emsp;&emsp;在压滤机领域，<%= corporationFullName %>凭借卓越的技术和丰富的经验，始终占据着领先地位。我们的优势如同璀璨星辰，照亮行业前行的道路。
+                </p>
+                <div class="box-outer">
+                    <div class= "box-item">
+                        <h2 class="box-item-title">
+                            先进技术保障
+                        </h2>
+                        <p class="box-item-content">
+                            我们采用国际前沿的压滤技术，结合自主研发的创新工艺，确保每一台压滤机都具备高效、稳定的性能。先进的过滤系统能够快速、精准地分离固液，为您节省大量时间和成本。
+                        </p>
+                    </div>
+                    <div class= "box-item">
+                        <h2 class="box-item-title">
+                            优质二手设备
+                        </h2>
+                        <p class="box-item-content">
+                            公司提供的二手压滤机均经过严格的检测和翻新处理，质量可靠，性能卓越。与全新设备相比，我们的二手压滤机不仅价格更为实惠，而且在品质上毫不逊色，为您提供高性价比的选择。
+                        </p>
+                    </div>
+                    <div class= "box-item">
+                        <h2 class="box-item-title">
+                            专业服务团队
+                        </h2>
+                        <p class="box-item-content">
+                            我们拥有一支专业、高效的服务团队，从设备选型、安装调试到售后维护，为您提供全方位的一站式服务。无论您遇到任何问题，我们都会第一时间响应，确保您的生产顺利进行。
+                        </p>
+                    </div>
+                </div>
+                <p class="under-box">
+                    &emsp;选择<%= corporationFullName %>，就是选择卓越品质和可靠保障！
+                </p>
+            </div>
+            <!-- 企业简介 -->
+            <div class="about">
+                <h2>企业简介</h2>
+                <p>&emsp;&emsp;<%- corporationProfile %></p>
+            </div>
+            <!-- 企业优势 -->
+            <div class="advantages">
+                <h2>企业优势</h2>
+                <ul>
+                    <%- corporationMerit %>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 页脚 -->
+    <footer>
+        <p>版权所有 &copy; 2025 <%= corporationFullName %> 保留所有权利</p>
+    </footer>
+    <!-- 引入 Font Awesome 图标库 -->
+    <script src="https://kit.fontawesome.com/7a05269831.js" crossorigin="anonymous"></script>
+    <script src="/javascripts/corporation.js"></script>
+</body>
+
+</html>

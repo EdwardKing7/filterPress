@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= corporationFullName %></title>
+    <link rel="stylesheet" href="/stylesheets/admin.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="/corporation">首页</a></li>
+            <li><a href="/product">产品与服务</a></li>
+            <li><a href="/contactus">联系我们</a></li>
+            <li><a href="/login">登录</a></li>
+            <li><a href="/admin" style="background-color: rgb(25, 110, 8); display: none;" id="system-admin">系统管理</a></li>
+        </ul>
+    </nav>
+    <!-- 头部 -->
+    <header>
+        <h1><%= corporationName %></h1>
+        <p><%= promotionText %></p>
+    </header>
+    <!-- 系统管理页面主体 -->
+    <div class="system-management">
+        <!-- 登录和退出信息区域 -->
+        <div class="login-info">
+            <span class="action-tab" id="to-login"><a href="/login">去登录</a></span>
+            <span class="action-tab" id="account-tab"></span>
+            <span id="logout">退出登录</span>
+            <!-- 账户信息悬浮框 -->
+            <div id="user-info-popup" style="display: none;">
+                <p><strong>用户名:</strong> <span id="popup-username"></span></p>
+                <p><strong>手机号:</strong> <span id="popup-phone"></span></p>
+                <p><strong>邮箱:</strong> <span id="popup-email"></span></p>
+                <p><strong>角色:</strong> <span id="popup-role"></span></p>
+            </div>
+        </div>
+        <!-- 左侧导航栏 -->
+        <div class="sidebar">
+            <ul>
+                <!-- <li><a href="#" data-target="login-management" class="active">登录管理</a></li>
+                <li><a href="#" data-target="account-management">账户管理</a></li>
+                <li><a href="#" data-target="role-management">角色管理</a></li> -->
+                <li><a href="#" data-target="page-data-management">页面数据管理</a></li>
+                <li><a href="#" data-target="cache-data-management">缓存管理</a></li>
+            </ul>
+        </div>
+        <!-- 右侧内容区域 -->
+        <div class="content">
+            <!-- 登录管理页面内容 -->
+            <!-- <div id="login-management" class="page active">
+                
+                <h2>登录管理</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>登录记录ID</th>
+                            <th>用户名</th>
+                            <th>登录时间</th>
+                            <th>登录IP</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>user1</td>
+                            <td>2024-10-20 10:00:00</td>
+                            <td>192.168.1.1</td>
+                            <td>
+                                <button class="view-detail">查看详情</button>
+                                <button class="delete-record">删除</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>user2</td>
+                            <td>2024-10-21 14:30:00</td>
+                            <td>192.168.1.2</td>
+                            <td>
+                                <button class="view-detail">查看详情</button>
+                                <button class="delete-record">删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>  -->
+            <!-- 账户管理页面内容 -->
+            <!-- <div id="account-management" class="page">
+                <h2>账户管理</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>账户ID</th>
+                            <th>用户名</th>
+                            <th>邮箱</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>user1</td>
+                            <td>user1@example.com</td>
+                            <td>
+                                <button class="edit-account">编辑</button>
+                                <button>删除</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>user2</td>
+                            <td>user2@example.com</td>
+                            <td>
+                                <button class="edit-account">编辑</button>
+                                <button>删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> -->
+            <!-- 角色管理页面内容 -->
+            <!-- <div id="role-management" class="page">
+                <h2>角色管理</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>角色ID</th>
+                            <th>角色编码</th>
+                            <th>角色名称</th>
+                            <th>权限描述</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>ROLE_ADMIN</td>
+                            <td>管理员</td>
+                            <td>拥有所有权限</td>
+                            <td>
+                                <button class="edit-role">编辑</button>
+                                <button>删除</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>ROLE_USER</td>
+                            <td>普通用户</td>
+                            <td>部分权限</td>
+                            <td>
+                                <button class="edit-role">编辑</button>
+                                <button>删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> -->
+            <div id="page-data-management" class="page active" style="text-align: center;">
+                <!-- 页面数据管理页面内容 -->
+                <h2 style="margin: 1% 1% auto; font-size: 200%;">页面数据管理</h2>
+                <form id="page-base-data-form" action="#" method="post" enctype="multipart/form-data">
+                    <h3 style="margin-top: 2%;margin-bottom: 2%; font-size: 150%;">首页</h3>
+                    <!-- 企业简称 -->
+                    <div class="form-group">
+                        <input name="companySimpleName" type="text" id="company-simple-name" placeholder="请输入企业简称" maxlength="20">
+                    </div>
+                    <!-- 企业全称 -->
+                    <div class="form-group">
+                        <input name="companyFullName" type="text" id="company-full-name" placeholder="请输入企业全称" maxlength="50">
+                    </div>
+                    <!-- 企业口号 -->
+                    <div class="form-group">
+                        <input name="companySlogan" type="text" id="company-slogan" placeholder="请输入企业口号" maxlength="100">
+                    </div>
+                    <!-- 企业简介 -->
+                    <div class="form-group">
+                        <textarea id="company-profile" name="companyProfile" placeholder="请输入企业简介"
+                            rows="5" cols="50"  style="width: 90%;" required maxlength="1000"></textarea>
+                    </div>
+                    <!-- 企业优势 -->
+                    <div class="form-group">
+                        <textarea id="company-advantage" name="companyAdvantage" placeholder="请输入企业优势"
+                            rows="5" cols="50"  style="width: 90%;" required maxlength="2000"></textarea>
+                    </div>
+                    <!-- 版权年份 -->
+                    <div class="form-group">
+                        <label style="margin: 1% 1% auto; font-size: 120%;font-weight: bold;color: chocolate;">版权年份</label>
+                        <select name="copyrightYear" id="copyright-year">
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                        </select>
+                    </div>
+                    <h3 style="margin: 1% 1% auto; font-size: 150%;">联系我们</h3>
+                    <!-- 企业地址 -->
+                    <div class="form-group">
+                        <input name="companyAddress" type="text" id="company-address" placeholder="请输入企业地址" maxlength="100">
+                    </div>
+                    <!-- 联系电话 -->
+                    <div class="form-group">
+                        <input name="companyContact" type="text" id="company-contact" placeholder="请输入联系电话" required maxlength="50">
+                    </div>
+                    <!-- 电子邮箱 -->
+                    <div class="form-group">
+                        <input name="companyEmail" type="text" id="company-email" placeholder="请输入电子邮箱" required maxlength="50">
+                    </div>
+                    <!-- 工作时间 -->
+                    <div class="form-group">
+                        <input name="companyWorkTime" type="text" id="company-work-time" placeholder="请输入工作时间" required maxlength="50">
+                    </div>
+                    <!-- 首页宣传视频 -->
+                    <div class="form-group">
+                        <label for="promotional-video">更改首页宣传视频</label>
+                        <input name="singleFile" type="file" id="promotional-video">
+                    </div>
+                    <button type="submit" style="color: aliceblue;background-color: rgb(29, 142, 222);">保存提交</button>
+                </form>
+            </div>
+            <div id="cache-data-management" class="page">
+                <!-- 页面数据管理页面内容 -->
+                <h2>缓存管理</h2>
+                <button id="update-items-cache">更新数据项缓存</button>
+                <span id="update-Cache-status"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 用户信息悬浮框 -->
+    <div id="user-info-popup" style="display: none;">
+        <p><strong>用户名:</strong> <span id="popup-username"></span></p>
+        <p><strong>手机号:</strong> <span id="popup-phone"></span></p>
+        <p><strong>邮箱:</strong> <span id="popup-email"></span></p>
+        <p><strong>角色:</strong> <span id="popup-role"></span></p>
+    </div>
+    <!-- 登录详情弹出框 -->
+    <div id="login-detail-popup" style="display: none;">
+        <h3>登录详情</h3>
+        <p><strong>登录记录ID:</strong> <span id="detail-login-id"></span></p>
+        <p><strong>用户名:</strong> <span id="detail-username"></span></p>
+        <p><strong>登录时间:</strong> <span id="detail-login-time"></span></p>
+        <p><strong>登录IP:</strong> <span id="detail-login-ip"></span></p>
+        <button id="close-login-detail">关闭</button>
+    </div>
+    <!-- 账户编辑弹出框 -->
+    <div id="account-edit-popup" style="display: none;">
+        <h3>编辑账户信息</h3>
+        <form id="account-edit-form">
+            <input type="text" id="edit-account-username" placeholder="用户名">
+            <input type="email" id="edit-account-email" placeholder="邮箱">
+            <button type="submit">保存</button>
+            <button id="close-account-edit">关闭</button>
+        </form>
+    </div>
+    <!-- 角色编辑弹出框 -->
+    <div id="role-edit-popup" style="display: none;">
+        <h3>编辑角色信息</h3>
+        <form id="role-edit-form">
+            <input type="text" id="edit-role-code" placeholder="角色编码">
+            <input type="text" id="edit-role-name" placeholder="角色名称">
+            <textarea id="edit-role-permission" placeholder="权限描述"></textarea>
+            <button type="submit">保存</button>
+            <button id="close-role-edit">关闭</button>
+        </form>
+    </div>
+    <!-- 文本编辑弹出框 -->
+    <div id="text-edit-popup" style="display: none;">
+        <h3>编辑文本</h3>
+        <textarea id="edit-textarea"></textarea>
+        <button id="save-edited-text">保存</button>
+        <button id="close-text-edit">关闭</button>
+    </div>
+    <!-- 页脚 -->
+    <footer>
+        <p>版权所有 &copy; 2025 <%= corporationFullName %> 保留所有权利</p>
+    </footer>
+    <!-- 引入 Axios 库，下面这两个和axios相关的包一定要注意顺序，axios.min.js在前面，第二个包是为了解决axios得到重定向请求可以正常重定向的 -->
+    <script src="/javascripts/axios.min.js"></script>
+    <script src="/javascripts/axios-interceptor.js"></script>
+    <script src="/javascripts/admin.js"></script>
+</body>
+
+</html>

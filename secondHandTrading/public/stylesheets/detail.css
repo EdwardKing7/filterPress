@@ -1,0 +1,271 @@
+/* 全局样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 头部样式 */
+header {
+    background-color: #55b027;
+    color: rgb(255, 255, 255);
+    margin-top: 3%;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* 导航栏样式 */
+nav {
+    background-color: #51ad51;
+    color: rgb(160, 50, 177);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 900;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+nav ul li {
+    margin: 0;
+    white-space: nowrap;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem 0.5rem;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+/* 右上角操作栏样式 */
+.top-right-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    background-color: #f4f4f4;
+    padding: 0%;
+    margin-top: 1%;
+}
+
+.action-tab {
+    cursor: pointer;
+    color: #007BFF;
+    margin-right: 10px;
+}
+.action-tab a {
+    color: #007BFF;
+}
+
+.account-tab {
+    position: relative;
+}
+
+#user-info-popup {
+    position: absolute;
+    margin-top: 2%;
+    text-align: left;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+#account-tab:hover #user-info-popup {
+    display: block;
+}
+
+/* 产品详情部分样式 */
+.product-detail {
+    display: flex;
+    padding: 40px;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-images {
+    position: relative;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-images img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.prev-button,
+.next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.prev-button {
+    left: 10px;
+}
+
+.next-button {
+    right: 10px;
+}
+
+.prev-button:hover,
+.next-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.product-info {
+    width: 60%;
+}
+
+.product-info h2 {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.product-info p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+/* 评论模块样式 */
+.comment-section {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.comment-section h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.comment-section input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.comment-section button {
+    padding: 12px 25px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.comment-section button:hover {
+    background-color: #0056b3;
+}
+
+.comment-list {
+    margin-top: 20px;
+    margin-bottom: 35%;
+}
+
+.comment {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+}
+
+.comment p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* 页脚样式 */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    margin: 6rem 0px auto auto;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+}
+
+/* 移动端样式 */
+@media (max-width: 768px) {
+    .product-detail {
+        flex-direction: column;
+    }
+
+    .product-images,
+    .product-info {
+        width: 100%;
+    }
+
+    .product-images {
+        margin-bottom: 20px;
+    }
+
+    .comment-section {
+        padding: 20px;
+    }
+
+    /* 头部样式 */
+    header {
+        margin-top: 13%;
+    }
+
+    /* 页脚样式 */
+    footer {
+        background-color: #333;
+        font-size: 80%;
+        color: white;
+        text-align: center;
+        padding: 1rem 1rem;
+        margin-top: 2rem;
+        position: fixed;
+        bottom: 0;
+    }
+}

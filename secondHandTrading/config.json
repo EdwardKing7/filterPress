@@ -1,0 +1,38 @@
+{
+    "fileServerPort": 8000,
+    "currentServer": "localhost",
+    "imagesServer": "http://60.204.159.70:8000/",
+    "fileStorageBasePath": "/myservice/nginx/file_storage",
+    "redis": {
+        "host": "60.204.159.70",
+        "port": 6330,
+        "password": "wcx1qaz@WSX",
+        "logindb": 1,
+        "loginExpireSeconds": 300,
+        "reconnectionInterval": 120000,
+        "maxWait": 2000
+    },
+    "mysql": {
+        "host": "60.204.159.70", 
+        "user": "root", 
+        "password": "wcx1qaz@WSX", 
+        "database": "db_yuyuan",
+        "port": 3306, 
+        "waitForConnections": true,
+        "connectionLimit": 10,
+        "minIdle": 2,
+        "idleTimeout": 30000,
+        "queueLimit": 0
+    },
+    "noNeedLogin": [
+        "/api/users/login",
+        "/api/users/register",
+        "/api/items",
+        "/api/users/getUserInfoByTokenId",
+        "/api/products/search",
+        "/api/products/getProductById",
+        "/api/massages/save",
+        "/api/comments",
+        "/api/comments/getCommentsByProductCode"
+    ]
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= corporationFullName %></title>
+    <link rel="stylesheet" href="/stylesheets/publish.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="/corporation">首页</a></li>
+            <li><a href="/product" style="background-color: rgb(25, 110, 8);">产品与服务</a></li>
+            <li><a href="/contactus">联系我们</a></li>
+            <li><a href="/login">登录</a></li>
+            <li><a href="/admin" style="display: none;" id="system-admin">系统管理</a></li>
+        </ul>
+    </nav>
+    <!-- 页面头部，与之前样式保持一致 -->
+    <header>
+        <h1><%= corporationName %></h1>
+        <p><%= promotionText %></p>
+    </header>
+    <!-- 发布产品表单区域 -->
+    <div class="publish-product-container">
+        <!-- 右上角操作栏 -->
+        <div class="top-right-actions">
+            <span class="action-tab" id="to-product"><a href="/product">去列表页</a></span>
+            <span class="action-tab" id="to-detail"><a id="to-detail-href" href="/detail">回详情页</a></span>
+            <span class="action-tab" id="account-tab"></span>
+            <span class="action-tab" id="logout">退出登录</span>
+            <!-- 账户信息悬浮框 -->
+            <div id="user-info-popup" style="display: none;">
+                <p><strong>用户名:</strong> <span id="popup-username"></span></p>
+                <p><strong>手机号:</strong> <span id="popup-phone"></span></p>
+                <p><strong>邮箱:</strong> <span id="popup-email"></span></p>
+                <p><strong>角色:</strong> <span id="popup-role"></span></p>
+            </div>
+        </div>
+        <div class="myPanel" style="width: 80%; margin: 0 auto; background-color: rgb(175, 221, 171); padding: 5%; border-radius: 15px;">
+            <h2>发布产品</h2>
+            <form id="publish-form" action="#" method="post" enctype="multipart/form-data">
+                <!-- 产品名称 -->
+                <div class="form-group">
+                    <label for="product-name">产品名称</label>
+                    <input name="productName" type="text" id="product-name" placeholder="请输入产品名称" required maxlength="255">
+                </div>
+                <!-- 原价 -->
+                <div class="form-group">
+                    <label for="original-price">原价（手动加上单位）</label>
+                    <input name="originPrice" type="text" id="original-price" placeholder="请输入原价" maxlength="10">
+                </div>
+                <!-- 期望价格 -->
+                <div class="form-group">
+                    <label for="expected-price">出售价格（手动加上单位）</label>
+                    <input name="expectPrice" type="text" id="expected-price" placeholder="请输入期望价格" required maxlength="10">
+                </div>
+                <!-- 库存数量 -->
+                <div class="form-group">
+                    <label for="original-price">库存数量</label>
+                    <input name="productNum" type="number" id="product_num" placeholder="请输入数量" required>
+                </div>
+                <!-- 是否允许砍价 -->
+                <div class="form-group">
+                    <label for="bargain-allowed">可否砍价</label>
+                    <select name="barginAllowed" id="bargain-allowed" required>
+                        <option value="yes">允许</option>
+                        <option value="no">不允许</option>
+                    </select>
+                </div>
+                <!-- 产品描述 -->
+                <div class="form-group">
+                    <label for="product-description">产品描述</label>
+                    <textarea id="product-description" name="productDescription" placeholder="请详细描述产品"
+                        rows="5" cols="50"  style="width: 100%;" required maxlength="1000"></textarea>
+                </div>
+
+
+                <!-- 产品所在位置 -->
+                <div class="form-group">
+                    <label for="product-location">产品所在位置</label>
+                    <input name="productLocation" type="text" id="product-location" placeholder="请输入产品所在位置" required maxlength="255">
+                </div>
+
+                <!-- 联系人电话 -->
+                <div class="form-group">
+                    <label for="product-location">联系人方式</label>
+                    <input name="contactPhone" type="text" id="contact-phone" placeholder="请输入联系方式：电话，邮箱，微信等" required maxlength="20">
+                </div>
+
+                
+                
+                <!-- 图片上传区域 -->
+                <!-- <div class="form-group">
+                    <label for="product-images">上传产品展示图(产品列表中图标)，1个图片</label>
+                    <input name="singleFile" type="file" id="product-images" required>
+                    <div id="image-preview" class="image-preview"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="files">上传多个详情图，目前最多支持10个</label>
+                    <span style="font-size: 12px; color: darkolivegreen; padding-left: 5px;margin-bottom: 5px;">支持格式：jpg/jpeg/png/gif/bmp/mp4/avi/mov</span>
+                    <input name="multipleFiles" type="file" id="files" multiple>
+                    <div id="fileError" class="error"></div>
+                </div> -->
+                <!-- 图片上传区域 -->
+                <div class="my-images" id="my-images-id">
+                    <div class="form-group">
+                        <label for="product-images">上传产品封面图，最多1个图片</label>
+                        <div class="show-image-list" id="show-image-list">
+                            <!-- 图片列表会动态生成 -->
+                        </div>
+                        <input type="file" id="show-upload-input" name="singleFile" style="display: none;">
+                        <button type="button" class="upload-button" id="show-upload-button" onclick="openFileUpload('showImage')">上传封面图</button>
+                    </div>
+                    
+    
+                    <div class="form-group">
+                        <label for="files">上传多个详情图，目前最多支持10个</label>
+                        <div class="detail-image-list" id="detail-image-list">
+                            <!-- 图片列表会动态生成 -->
+                        </div>
+                        <input type="file" id="detail-upload-input" name="multipleFiles"  style="display: none;" multiple>
+                        <div id="fileError" class="error"></div>
+                        <button type="button" class="upload-button" id="detail-upload-button"  onclick="openFileUpload('detailImage')">上传详情图</button>
+                        
+                    </div>
+                </div>
+
+
+                <button type="submit">发布产品</button>
+            </form>
+        </div>
+    </div>
+    <!-- 页面尾部，与之前样式保持一致 -->
+    <footer>
+        <p>版权所有 &copy; 2025 <%= corporationFullName %> 保留所有权利</p>
+    </footer>
+    <!-- 引入 Axios 库，下面这两个和axios相关的包一定要注意顺序，axios.min.js在前面，第二个包是为了解决axios得到重定向请求可以正常重定向的 -->
+    <script src="/javascripts/axios.min.js"></script>
+    <script src="/javascripts/axios-interceptor.js"></script>
+    <script src="/javascripts/publish.js"></script>
+    <script>
+        
+    </script>
+</body>
+
+</html>

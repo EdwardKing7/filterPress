@@ -1,0 +1,232 @@
+/* 全局样式 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    visibility: hidden;
+    justify-content: center;
+}
+
+/* 头部样式 */
+header {
+    background-color: #55b027;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 3%;
+    padding: 2rem 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* 导航栏样式 */
+nav {
+    background-color: #51ad51;
+    color: rgb(160, 50, 177);
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+nav ul li {
+    margin: 0;
+    white-space: nowrap;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem 0.5rem;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+/* 主要内容容器样式 */
+.container {
+    background-color: rgb(175, 221, 171);
+    border-radius: 15px;
+    margin: 5%;
+    padding: 5%;
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* 联系信息部分样式 */
+.contact-info {
+    background-color: white;
+    padding: 1rem;
+    padding-bottom: 10%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1 1 40%;
+    min-width: 90%;
+}
+
+.contact-info h2 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.contact-info p {
+    line-height: 1.6;
+    color: #666;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.contact-info i {
+    margin-right: 0.5rem;
+    color: #007BFF;
+}
+
+/* 地图部分样式 */
+.map {
+    margin-top: 1.5rem;
+}
+
+.map iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 8px;
+}
+
+/* 联系表单部分样式 */
+.contact-form {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1 1 40%;
+    min-width: 90%;
+    text-align: center;
+}
+
+.contact-form h2 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 90%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.loading-message {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+/* 移动端输入框样式调整 */
+@media (max-width: 768px) {
+   .contact-form input,
+   .contact-form textarea {
+        font-size: 14px;
+    }
+
+    .contact-info p {
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.contact-form button {
+    background-color: #007BFF;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    justify-content: center;
+    display: block;
+    margin: 0 auto;
+}
+
+/* 移动端按钮样式调整 */
+@media (max-width: 768px) {
+   .contact-form button {
+        font-size: 14px;
+    }
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+
+/* footer 样式 */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    margin-top: 5%;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+   .container {
+        flex-direction: column;
+    }
+    /* 页脚样式 */
+    footer {
+        background-color: #333;
+        font-size: 80%;
+        color: white;
+        text-align: center;
+        padding: 1rem 1rem;
+        margin-top: 2rem;
+        position: fixed;
+        bottom: 0;
+    }
+    /* 头部样式 */
+    header {
+        margin-top: 13%;
+    }
+}

@@ -1,0 +1,271 @@
+/* 全局样式 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 头部样式 */
+header {
+    background-color: #55b027;
+    color: rgb(255, 255, 255);
+    margin-top: 3%;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* 导航栏样式 */
+nav {
+    background-color: #51ad51;
+    color: rgb(160, 50, 177);
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+nav ul li {
+    margin: 0;
+    white-space: nowrap;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem 0.5rem;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+
+/* 右上角操作栏样式 */
+.top-right-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    background-color: #f4f4f4;
+    padding: 0%;
+    margin-top: 1%;
+}
+
+.action-tab {
+    cursor: pointer;
+    color: #007BFF;
+    margin-right: 10px;
+}
+.action-tab a {
+    color: #007BFF;
+}
+
+.account-tab {
+    position: relative;
+}
+
+#user-info-popup {
+    position: absolute;
+    margin-top: 2%;
+    text-align: left;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+#account-tab:hover #user-info-popup {
+    display: block;
+}
+
+/* 搜索与筛选区域样式 */
+.search-filter {
+    text-align: center;
+    margin-top: 1%;
+    height: 5%;
+    margin-bottom: 1%;
+    border-radius: 15px;
+}
+
+.button {
+    background-color: #318bec;
+    color: antiquewhite;
+    border-color: #318bec;
+    border-radius: 5px;
+}
+#search-name {
+    border-radius: 5px;
+}
+#sort-time {
+    border-radius: 5px;
+    text-align: center;
+}
+#sort-price {
+    border-radius: 5px;
+    text-align: center;
+}
+#expect-price {
+    border-radius: 5px;
+    text-align: center;
+}
+#bargain-filter {
+    border-radius: 5px;
+    text-align: center;
+}
+.search-filter input,
+.search-filter button,
+.search-filter select {
+    margin: 0 5px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+/* 产品列表样式 */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1%;
+    padding: 20px;
+    justify-content: flex-start;
+}
+
+.product-item {
+    width: calc(20% - 10px);
+    background-color: rgb(215, 230, 233);
+    padding-top: 6px;
+    margin: 3px;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-item img {
+    height: 100px; /* 固定图片高度 */
+    padding-bottom: 2px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.product-item h2 {
+    font-size: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.product-item hh2 {
+    font-size: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    text-decoration: line-through;
+}
+.product-item h3 {
+    font-size: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.product-item h4 {
+    font-size: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color: rgb(225, 19, 19);
+}
+a {
+    text-decoration: none;
+    color: rgb(8, 7, 8);
+  }
+/* .product-item p {
+    font-size: 14px;
+    padding-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+} */
+
+/* 移动端样式 */
+@media (max-width: 768px) {
+   .product-item {
+        width: calc(50% - 20px);
+        margin: 4%;
+    }
+   /* footer 样式 */
+    footer {
+        background-color: #333;
+        font-size: 80%;
+        color: white;
+        text-align: center;
+        padding: 1rem 1rem;
+        width: 100%;
+        margin-top: auto;
+        box-sizing: border-box;
+        position: fixed;
+        bottom: 0;
+    }
+
+    /* 头部样式 */
+    header {
+        margin-top: 13%;
+    }
+}
+
+@media (max-width: 480px) {
+   .product-item {
+        width: calc(100% - 20px);
+        margin: 4%;
+    }
+}
+
+/* 页脚样式 */
+/* footer {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+} */
+/* footer 样式 */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    margin-top: auto;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+}

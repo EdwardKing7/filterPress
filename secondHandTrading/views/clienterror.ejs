@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= corporationName %></title>
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 头部样式 */
+        header {
+            background-color: #55b027;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        /* 导航栏样式 */
+        nav {
+            background-color: #51ad51;
+            color: rgb(160, 50, 177);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        nav ul li {
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 0.8rem;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        /* 中间提示信息样式 */
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            background-color: #f4f4f4;
+        }
+
+        .message-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            width: 400px;
+        }
+
+        .message-card h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .message-card p {
+            color: #666;
+        }
+
+        /* footer 样式，假设与“联系我们”一致 */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="/corporation">首页</a></li>
+            <li><a href="/product">产品与服务</a></li>
+            <li><a href="/contactus">联系我们</a></li>
+            <li><a href="/login">登录</a></li>
+            <li><a href="/admin" style="display: none;" id="system-admin">系统管理</a></li>
+        </ul>
+    </nav>
+    <!-- header 部分 -->
+     <!-- 页面头部，与联系我们页签一致 -->
+    <header>
+        <h1><%= corporationName %></h1>
+        <p><%= promotionText %></p>
+    </header>
+    
+    <!-- 中间提示信息部分 -->
+    <div style="text-align: center;">
+        <div style="margin-top: 30px;margin-bottom: 10px;"><h1>联系我们</h1></div>
+        <div style="display: flex;justify-content: center;align-items: center;">
+            <div style="padding-top: 10px; margin-top: 10px;background-color: #ece5e5;border-radius: 5%;">
+                <h2 style="color: rgb(223, 53, 53);">页面逻辑有误</h2>
+                <p style="margin: 30px;" id="errorFrom"></p>
+                <p style="margin: 30px;" id="errorInfo"></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const errorInfoElement = document.getElementById("errorInfo");
+        const errorFromElement = document.getElementById("errorFrom");
+        // 创建 URLSearchParams 对象
+        const urlParams = new URLSearchParams(window.location.search);
+        errorFromElement.textContent = "错误来自页面：" + urlParams.get('errorFromPage') + "的函数：" + urlParams.get('errorFromFunc');
+        const errorInfo = urlParams.get('errorInfo');
+        errorInfoElement.textContent = decodeURIComponent(errorInfo);
+    </script>
+
+    <!-- 页面尾部，与之前样式保持一致 -->
+    <footer>
+        <p>版权所有 &copy; 2025 <%= corporationFullName %> 保留所有权利</p>
+    </footer>
+</body>
+
+</html>

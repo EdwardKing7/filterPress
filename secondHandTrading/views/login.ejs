@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= corporationFullName %></title>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="/corporation">首页</a></li>
+            <li><a href="/product">产品与服务</a></li>
+            <li><a href="/contactus">联系我们</a></li>
+            <li><a href="/login" style="background-color: rgb(25, 110, 8);">登录</a></li>
+            <li><a href="/admin" style="display: none;" id="system-admin">系统管理</a></li>
+        </ul>
+    </nav>
+    <!-- 页面头部，与之前样式保持一致 -->
+    <header>
+        <h1><%= corporationName %></h1>
+        <p><%= promotionText %></p>
+    </header>
+    
+    <!-- 登录和注册区域 -->
+    <div class="login-register-container">
+
+        <div id="reg-suc-msg" style="display: none;margin: 1% auto;"><strong id="reg-suc-msg-text" style="color: rgb(37, 98, 28);"></strong></div>
+        <div class="login-form" style="text-align: center;">
+            <h3>登录</h3>
+            <form id="login-form" action="/api/users/login" method="post" enctype="application/x-www-form-urlencoded">
+                <input name="complexAccount" type="text" placeholder="账户、手机号、email都可以" required>
+                <input name="password" type="password" placeholder="密码" required>
+                <button type="submit">登录</button>
+            </form>
+            <p><a href="#" id="go-to-register">没有账号？去注册</a></p>
+        </div>
+        <div class="register-form" style="display: none; text-align: center;">
+            <h3>注册</h3>
+            <form id="register-form" action="/api/users/register" method="post" enctype="application/x-www-form-urlencoded">
+                <input name="name" type="text" id="register-name" placeholder="昵称" required>
+                <input name="email" type="email" id="register-email" placeholder="邮箱">
+                <input name="phone" type="tel" id="register-phone" placeholder="手机号">
+                <input name="password" type="password" id="register-password" placeholder="密码" required>
+                <div id="password-strength-bar" class="password-strength-bar"></div>
+                <p id="password-strength-text"></p>
+                <input type="password" id="register-confirm-password" placeholder="再次输入密码" required>
+                <button type="submit" >注册</button>
+                <p id="register-error" style="color: red;"></p>
+            </form>
+            <p><a href="#" id="go-to-login">已有账号？去登录</a></p>
+        </div>
+    </div>
+    <!-- 页面尾部，与之前样式保持一致 -->
+    <footer>
+        <p>版权所有 &copy; <%= corporationFullName %> 保留所有权利</p>
+    </footer>
+    <!-- 引入 Axios 库，下面这两个和axios相关的包一定要注意顺序，axios.min.js在前面，第二个包是为了解决axios得到重定向请求可以正常重定向的 -->
+    <script src="/javascripts/axios.min.js"></script>
+    <script src="/javascripts/axios-interceptor.js"></script>
+    <script src="/javascripts/login.js"></script>
+</body>
+
+</html>

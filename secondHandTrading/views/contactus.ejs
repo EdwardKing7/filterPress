@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= corporationFullName %></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheets/contactus.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="/corporation">首页</a></li>
+            <li><a href="/product">产品与服务</a></li>
+            <li><a href="/contactus" style="background-color: rgb(25, 110, 8);">联系我们</a></li>
+            <li><a href="/login">登录</a></li>
+            <li><a href="/admin" style="display: none;" id="system-admin">系统管理</a></li>
+        </ul>
+    </nav>
+    <!-- 头部 -->
+    <header>
+        <h1><%= corporationName %></h1>
+        <p><%= promotionText %></p>
+    </header>
+    <!-- 主要内容容器 -->
+    <div class="container">
+        <!-- 联系信息 -->
+        <div class="contact-info">
+            <h2>联系信息</h2>
+            <p><strong>公司地址：<i class="fa-solid fa-location-dot"></i>&emsp;</strong><span id="company-address">河南省商丘市民权县孙六镇&emsp;</span></p>
+            <p><strong>联系电话：<i class="fa-solid fa-phone"></i>&emsp;</strong><span id="company-phone">15036665004&emsp;</span></p>
+            <p><strong>电子邮箱：<i class="fa-solid fa-envelope"></i>&emsp;</strong><span id="company-email">待补充&emsp;</span></p>
+            <p><strong>工作时间：<i class="fa-solid fa-clock"></i>&emsp;</strong><span id="company-work-time">09：00~18：00&emsp;</span></p>
+        </div>
+        <!-- 联系表单 -->
+        <div class="contact-form">
+            <h2>给我们留言</h2>
+            <form id="contactForm" action="/api/massages/save" method="post" enctype="application/x-www-form-urlencoded" style="text-align: left; padding: 10%; padding-top: 5%;">
+                <label for="name"><strong>称&emsp;&emsp;呼：</strong></label>
+                <input type="text" id="name" name="name" placeholder="请输入你的称呼" required>
+                <label for="phone"><strong>手机号码：</strong></label>
+                <input type="text" id="phone" name="phone" placeholder="请输入11位手机号码">
+                <label for="email"><strong>邮&emsp;&emsp;箱：</strong></label>
+                <input type="email" id="email" name="email" placeholder="请输入邮箱地址">
+                <label for="message"><strong>留言内容：</strong></label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <button type="submit">提交</button>
+            </form>
+        </div>
+    </div>
+    <!-- 页脚 -->
+    <footer>
+        <p>版权所有 &copy; 2025 <%= corporationFullName %> 保留所有权利</p>
+    </footer>
+    <!-- 引入 Axios 库，下面这两个和axios相关的包一定要注意顺序，axios.min.js在前面，第二个包是为了解决axios得到重定向请求可以正常重定向的 -->
+    <script src="/javascripts/axios.min.js"></script>
+    <script src="/javascripts/axios-interceptor.js"></script>
+    <script src="/javascripts/contactus.js"></script>
+</body>
+
+</html>

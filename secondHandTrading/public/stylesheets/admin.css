@@ -1,0 +1,426 @@
+/* 全局样式 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* 头部样式 */
+header {
+    background-color: #55b027;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 3%;
+    padding: 2rem 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* 导航栏样式 */
+nav {
+    background-color: #51ad51;
+    color: rgb(160, 50, 177);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 900;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+nav ul li {
+    margin: 0;
+    white-space: nowrap;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem 0.5rem;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+/* 系统管理页面样式 */
+.system-management {
+    position: relative;
+    display: flex;
+    min-height: calc(100vh - 130px);
+}
+
+.login-info {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    gap: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#account-tab:hover #user-info-popup {
+    display: block;
+}
+/* 悬浮框样式 */
+/* #user-info-popup {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    display: none;
+} */
+#user-info-popup {
+    position: absolute;
+    width: 100%;
+    text-align: left;
+    margin-top: 2%;
+    top: 20px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+/* 右上角操作栏样式 */
+/* .top-right-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+} */
+
+.login-info span {
+    cursor: pointer;
+    color: #007BFF;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    color: white;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: #555;
+}
+
+.sidebar ul li a.active {
+    background-color: #007BFF;
+    border-left: 5px solid #0056b3;
+    transform: translateX(5px);
+}
+
+.content {
+    flex: 1;
+    padding: 2rem;
+}
+
+.page {
+    display: none;
+    margin-bottom: 5%;
+}
+
+.page.active {
+    display: block;
+}
+
+/* 注册登录页面样式 */
+.login-register-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.login-form,
+.register-form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    max-width: 100%;
+}
+
+.login-form h3,
+.register-form h3 {
+    margin-top: 0;
+}
+
+.login-form input,
+.register-form input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-form button,
+.register-form button {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-form button:hover,
+.register-form button:hover {
+    background-color: #0056b3;
+}
+
+.action-tab {
+    cursor: pointer;
+    color: #007BFF;
+    margin-right: 10px;
+}
+.action-tab a {
+    color: #007BFF;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(8, 7, 8);
+  }
+
+/* 密码强度条样式 */
+.password-strength-bar {
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.password-strength-bar div {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+/* 表格样式 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+#update-items-cache:hover {
+    background-color: #077af5;
+}
+
+#update-items-cache {
+    background-color: rgb(60, 79, 141); 
+    border-radius: 5px; 
+    color: aliceblue; 
+    border-width: 0cap;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+button {
+    padding: 0.3rem 0.6rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+/* footer 样式 */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    margin-top: 5%;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+}
+
+#save-page-data {
+    background-color: #077af5;
+}
+
+#save-page-data:hover {
+    background-color: #06305d;
+}
+
+#page-base-data-form {
+    width: 95%;
+    background-color: rgb(175, 221, 171);
+    border-radius: 15px;
+    margin: 5% auto;
+    padding-top: 1%;
+    z-index: 950;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 90%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* 移动端样式 */
+@media (max-width: 768px) {
+    /* 页脚样式 */
+    footer {
+        background-color: #333;
+        font-size: 80%;
+        color: white;
+        text-align: center;
+        padding: 1rem 1rem;
+        margin-top: 2rem;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .page {
+        margin-bottom: 18%;
+    }
+
+    /* 头部样式 */
+    header {
+        margin-top: 13%;
+    }
+
+    .system-management {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .sidebar ul {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .sidebar ul li a {
+        padding: 0.8rem;
+    }
+
+    .login-register-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #page-data-management {
+        margin-top: 20%;
+    }
+
+    .login-info {
+        margin-top: 20%;
+    }
+}
+
+
+
+/* 弹出框样式 */
+#login-detail-popup,
+#account-edit-popup,
+#role-edit-popup,
+#text-edit-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    display: none;
+}
+
+/* 页面数据管理样式 */
+.data-item {
+    margin-bottom: 1rem;
+}
+
+.data-item label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.data-item select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* 可编辑文本样式 */
+.editable-text {
+    border-bottom: 1px dotted #ccc;
+    cursor: pointer;
+}

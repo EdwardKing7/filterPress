@@ -1,0 +1,177 @@
+/* 全局样式 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 头部样式 */
+header {
+    background-color: #55b027;
+    color: rgb(255, 255, 255);
+    margin-top: 3%;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* 导航栏样式 */
+nav {
+    background-color: #51ad51;
+    color: rgb(160, 50, 177);
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+nav ul li {
+    margin: 0;
+    white-space: nowrap;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem 0.5rem;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+/* 登录和注册区域样式 */
+.login-register-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+
+.login-form,
+.register-form {
+    background-color: rgb(175, 221, 171);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    max-width: 100%;
+    display: block;
+    margin: 3% auto;
+}
+
+.login-form h3,
+.register-form h3 {
+    margin-top: 0;
+}
+
+.login-form input,
+.register-form input {
+    width: 90%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-form button,
+.register-form button {
+    width: 95%;
+    padding: 0.5rem;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.login-form button:hover,
+.register-form button:hover {
+    background-color: #0056b3;
+}
+
+/* 密码强度条样式 */
+.password-strength-bar {
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.password-strength-bar div {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+/* 页脚样式 */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    margin: 6rem 0px auto auto;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+}
+
+
+/* 移动端样式 */
+@media (max-width: 768px) {
+   .login-register-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .login-form,
+    .register-form {
+        background-color: rgb(175, 221, 171); ;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 70%;
+        max-width: 100%;
+        display: block;
+        margin: 5% auto;
+    }
+    /* 页脚样式 */
+    footer {
+        background-color: #333;
+        font-size: 80%;
+        color: white;
+        text-align: center;
+        padding: 1rem 1rem;
+        margin-top: 2rem;
+        position: fixed;
+        bottom: 0;
+    }
+
+    /* 头部样式 */
+    header {
+        margin-top: 13%;
+    }
+}
