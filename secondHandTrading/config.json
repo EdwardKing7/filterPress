@@ -1,8 +1,8 @@
 {
     "fileServerPort": 8000,
     "currentServer": "localhost",
-    "imagesServer": "http://60.204.159.70:8000/",
-    "fileStorageBasePath": "/myservice/nginx/file_storage",
+    "imagesServer": "图片服务器的访问地址",
+    "fileStorageBasePath": "文件存储在服务器上的基础目录",
     "redis": {
         "host": "hostname",
         "port": "port",
